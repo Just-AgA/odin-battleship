@@ -1,0 +1,1 @@
+This project is about recreating a Battleship game using TDD. Each method of the factory functions will have its own test cases where i will test the functionality to be as expected. A simple UI will be created to have visual representation of the game,and the game will be played against the computer.
