@@ -11,6 +11,22 @@ function Ship(length) {
   };
 
   const getCoordinates = () => coordinates;
+
+  const hit = (x, y) => {
+    // Check if the attack is on this ship
+    const isPartOfShip = coordinates.some(
+      (coordinate) => coordinate[0] === x && coordinate[1] === y
+    );
+    const isAlreadyHit = hitCoordinates.some(
+      (coordinate) => coordinate[0] === x && coordinate[1] === y
+    );
+
+    if (isPartOfShip && !isAlreadyHit) {
+      hitCoordinates.push([x, y]);
+      return true;
+    }
+    return false;
+  };
 }
 
 module.exports = Ship;
