@@ -1,15 +1,16 @@
-function Ship(length, hits = 0) {
-  if (length <= 0) return;
+function Ship(length) {
+  if (length <= 0) throw new Error('Ship length must be positive.');
 
-  const hit = () => {
-    hits++;
-    return hits;
+  // Coordinates of the ship on the gameboard
+  let coordinates = [];
+  // Coordinates where the ship got hit
+  let hitCoordinates = [];
+
+  const setCoordinates = (coords) => {
+    coordinates = coords;
   };
 
-  return {
-    hit,
-    isSunk,
-  };
+  const getCoordinates = () => coordinates;
 }
 
 module.exports = Ship;
