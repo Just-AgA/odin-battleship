@@ -16,4 +16,14 @@ describe('Ship Factory Function', () => {
     ship.setCoordinates(coords);
     expect(ship.getCoordinates()).toEqual(coords);
   });
+
+  test('registers a hit at a valid coordinate', () => {
+    const ship = Ship(2);
+    ship.setCoordinates([
+      [1, 1],
+      [1, 2],
+    ]);
+    const result = ship.hit(1, 1);
+    expect(result).toBe(true);
+  });
 });
