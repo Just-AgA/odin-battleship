@@ -47,4 +47,14 @@ describe('Ship Factory Function', () => {
     const secondHit = ship.hit(1, 1);
     expect(secondHit).toBe(false);
   });
+
+  test('isSunk returns false if not all parts are hit', () => {
+    const ship = Ship(2);
+    ship.setCoordinates([
+      [0, 0],
+      [0, 1],
+    ]);
+    ship.hit(0, 0);
+    expect(ship.isSunk()).toBe(false);
+  });
 });
