@@ -36,4 +36,15 @@ describe('Ship Factory Function', () => {
     const result = ship.hit(2, 2);
     expect(result).toBe(false);
   });
+
+  test('does not register a hit at the same coordinate twice', () => {
+    const ship = Ship(2);
+    ship.setCoordinates([
+      [1, 1],
+      [1, 2],
+    ]);
+    ship.hit(1, 1);
+    const secondHit = ship.hit(1, 1);
+    expect(secondHit).toBe(false);
+  });
 });
