@@ -27,6 +27,16 @@ function Ship(length) {
     }
     return false;
   };
+
+  const isSunk = () => hitCoordinates.length === coordinates.length;
+
+  return {
+    length,
+    setCoordinates,
+    getCoordinates,
+    hit,
+    isSunk,
+  };
 }
 
 module.exports = Ship;
