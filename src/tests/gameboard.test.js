@@ -22,4 +22,11 @@ describe('Gameboard', () => {
     const placed = gameboard.placeShip(ship2, 1, 0, true);
     expect(placed).toBe(false);
   });
+
+  test('registers hits and misses correctly', () => {
+    const ship = Ship(2);
+    gameboard.placeShip(ship, 0, 0, true);
+    expect(gameboard.receiveAttack(0, 0)).toBe('hit');
+    expect(gameboard.receiveAttack(5, 5)).toBe('miss');
+  });
 });
