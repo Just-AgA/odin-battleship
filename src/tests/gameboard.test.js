@@ -37,4 +37,11 @@ describe('Gameboard', () => {
     gameboard.receiveAttack(1, 0);
     expect(gameboard.allShipsSunk()).toBe(true);
   });
+
+  test('ignores duplicate attacks', () => {
+    const ship = Ship(2);
+    gameboard.placeShip(ship, 0, 0, true);
+    gameboard.receiveAttack(0, 0);
+    expect(gameboard.receiveAttack(0, 0)).toBe(null); // already attacked
+  });
 });
