@@ -13,6 +13,15 @@ const Gameboard = () => {
       ship.getCoordinates().some((coord) => coord[0] === x && coord[1] === y)
     );
   };
+
+  const alreadyAttacked = (x, y) => {
+    return (
+      hits.some((coordinate) => coordinate[0] === x && coordinate[1] === y) ||
+      missedAttacks.some(
+        (coordinate) => coordinate[0] === x && coordinate[1] === y
+      )
+    );
+  };
 };
 
 module.exports = Gameboard;
