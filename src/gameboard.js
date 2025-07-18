@@ -51,6 +51,24 @@ const Gameboard = () => {
     ships.push(ship);
     return true;
   };
+
+  const receiveAttack = (x, y) => {
+    if (!isValidCoord(x, y) || alreadyAttacked(x, y)) {
+      return null; // Invalid or duplicate attack
+    }
+
+    for (const ship of ships) {
+      if (ship.hit(x, y)) {
+        hits.push([x, y]);
+        return 'hit';
+      }
+    }
+
+    missedAttacks.push([x, y]);
+    return 'miss';
+  };
+
+  const allShipsSunk = () => ships.every((ship) => ship.isSunk());
 };
 
 module.exports = Gameboard;
