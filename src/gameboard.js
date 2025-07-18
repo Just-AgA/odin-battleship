@@ -22,6 +22,35 @@ const Gameboard = () => {
       )
     );
   };
+
+  const placeShip = (ship, x, y, isHorizontal = true) => {
+    const coords = [];
+
+    for (let i = 0; i < ship.length; i++) {
+      const coordX = isHorizontal ? x + i : x;
+      const coordY = isHorizontal ? y : y + i;
+
+      if (!isValidCoord(coordX, coordY)) return false;
+      coords.push([coordX, coordY]);
+    }
+
+    // Check buffer zone around each ship coordinate
+    for (const [cx, cy] of coords) {
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          const nx = cx + dx;
+          const ny = cy + dy;
+          if (isValidCoord(nx, ny) && isOccupied(nx, ny)) {
+            return false;
+          }
+        }
+      }
+    }
+
+    ship.setCoordinates(coords);
+    ships.push(ship);
+    return true;
+  };
 };
 
 module.exports = Gameboard;
