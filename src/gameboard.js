@@ -69,6 +69,15 @@ const Gameboard = () => {
   };
 
   const allShipsSunk = () => ships.every((ship) => ship.isSunk());
+
+  return {
+    placeShip,
+    receiveAttack,
+    allShipsSunk,
+    getHits: () => hits,
+    getMisses: () => missedAttacks,
+    getShips: () => ships,
+  };
 };
 
 module.exports = Gameboard;
