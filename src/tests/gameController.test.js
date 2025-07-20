@@ -18,4 +18,11 @@ describe('GameController', () => {
       expect(controller.getCurrentPlayer()).toBe('computer');
     }
   });
+
+  test('computer plays and turn goes back to human', () => {
+    controller.takeTurn(0, 0); // human plays
+    const { result } = controller.computerTurn(); // computer plays
+    expect(['hit', 'miss']).toContain(result);
+    expect(controller.getCurrentPlayer()).toBe('human');
+  });
 });
