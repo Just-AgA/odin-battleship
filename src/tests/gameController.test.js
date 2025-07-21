@@ -25,4 +25,14 @@ describe('GameController', () => {
     expect(['hit', 'miss']).toContain(result);
     expect(controller.getCurrentPlayer()).toBe('human');
   });
+
+  test('detects game over when all ships are sunk', () => {
+    const enemyBoard = controller.computer.getGameboard();
+    for (const ship of enemyBoard.getShips()) {
+      for (const [x, y] of ship.getCoordinates()) {
+        controller.player.attack(enemyBoard, x, y);
+      }
+    }
+    expect(controller.isGameOver()).toBe(true);
+  });
 });
