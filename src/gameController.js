@@ -43,6 +43,17 @@ const GameController = () => {
   const isGameOver = () =>
     player.getGameboard().allShipsSunk() ||
     computer.getGameboard().allShipsSunk();
+
+  let currentPlayer = 'human';
+
+  const takeTurn = (x, y) => {
+    if (currentPlayer === 'human') {
+      const result = player.attack(computer.getGameboard(), x, y);
+      if (result) currentPlayer = 'computer';
+      return result;
+    }
+    return null;
+  };
 };
 
 module.exports = GameController;
