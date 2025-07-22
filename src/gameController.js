@@ -5,7 +5,6 @@ const GameController = () => {
   const player = Player(false);
   const computer = Player(true);
 
-  // Example predetermined ship setup
   const setupShips = () => {
     const playerBoard = player.getGameboard();
     const computerBoard = computer.getGameboard();
@@ -44,36 +43,6 @@ const GameController = () => {
   const isGameOver = () =>
     player.getGameboard().allShipsSunk() ||
     computer.getGameboard().allShipsSunk();
-
-  let currentPlayer = 'human';
-
-  const takeTurn = (x, y) => {
-    if (currentPlayer === 'human') {
-      const result = player.attack(computer.getGameboard(), x, y);
-      if (result) currentPlayer = 'computer';
-      return result;
-    }
-    return null;
-  };
-
-  const computerTurn = () => {
-    if (currentPlayer === 'computer') {
-      const { result, x, y } = computer.computerAttack(player.getGameboard());
-      currentPlayer = 'human';
-      return { result, x, y };
-    }
-    return null;
-  };
-
-  return {
-    player,
-    computer,
-    setupShips,
-    takeTurn,
-    computerTurn,
-    isGameOver,
-    getCurrentPlayer: () => currentPlayer,
-  };
 };
 
 module.exports = GameController;
