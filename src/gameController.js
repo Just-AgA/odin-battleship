@@ -54,6 +54,15 @@ const GameController = () => {
     }
     return null;
   };
+
+  const computerTurn = () => {
+    if (currentPlayer === 'computer') {
+      const { result, x, y } = computer.computerAttack(player.getGameboard());
+      currentPlayer = 'human';
+      return { result, x, y };
+    }
+    return null;
+  };
 };
 
 module.exports = GameController;
