@@ -63,6 +63,16 @@ const GameController = () => {
     }
     return null;
   };
+
+  return {
+    player,
+    computer,
+    setupShips,
+    takeTurn,
+    computerTurn,
+    isGameOver,
+    getCurrentPlayer: () => currentPlayer,
+  };
 };
 
 module.exports = GameController;
