@@ -18,4 +18,14 @@ describe('Player', () => {
     const result = player.attack(enemyBoard, 0, 0);
     expect(result).toBe('hit');
   });
+
+  test('computer makes legal random move', () => {
+    const computer = Player(true);
+    const result = computer.computerAttack(player.getGameboard());
+    expect(['hit', 'miss']).toContain(result.result);
+    expect(result.x).toBeGreaterThanOrEqual(0);
+    expect(result.x).toBeLessThan(10);
+    expect(result.y).toBeGreaterThanOrEqual(0);
+    expect(result.y).toBeLessThan(10);
+  });
 });
