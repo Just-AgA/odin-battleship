@@ -28,4 +28,16 @@ describe('Player', () => {
     expect(result.y).toBeGreaterThanOrEqual(0);
     expect(result.y).toBeLessThan(10);
   });
+
+  test('computer does not attack same square twice', () => {
+    const computer = Player(true);
+    const coords = new Set();
+
+    for (let i = 0; i < 100; i++) {
+      const { x, y } = computer.computerAttack(player.getGameboard());
+      const key = `${x},${y}`;
+      expect(coords.has(key)).toBe(false);
+      coords.add(key);
+    }
+  });
 });
