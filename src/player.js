@@ -5,6 +5,24 @@ function Player(isComputer = false) {
   const previousMoves = [];
 
   const getGameboard = () => gameboard;
+
+  const attack = (enemyBoard, x, y) => {
+    return enemyBoard.receiveAttack(x, y);
+  };
+
+  const getRandomCoord = () => {
+    let x, y;
+    do {
+      x = Math.floor(Math.random() * 10);
+      y = Math.floor(Math.random() * 10);
+    } while (
+      previousMoves.some(
+        (coordinate) => coordinate[0] === x && coordinate[1] === y
+      )
+    );
+    previousMoves.push([x, y]);
+    return [x, y];
+  };
 }
 
 module.exports = Player;
