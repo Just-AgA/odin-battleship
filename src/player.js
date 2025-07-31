@@ -28,6 +28,13 @@ function Player(isComputer = false) {
     const [x, y] = getRandomCoord();
     return { result: enemyBoard.receiveAttack(x, y), x, y };
   };
+
+  return {
+    isComputer,
+    getGameboard,
+    attack,
+    computerAttack,
+  };
 }
 
 module.exports = Player;
