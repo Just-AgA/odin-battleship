@@ -23,6 +23,11 @@ function Player(isComputer = false) {
     previousMoves.push([x, y]);
     return [x, y];
   };
+
+  const computerAttack = (enemyBoard) => {
+    const [x, y] = getRandomCoord();
+    return { result: enemyBoard.receiveAttack(x, y), x, y };
+  };
 }
 
 module.exports = Player;
