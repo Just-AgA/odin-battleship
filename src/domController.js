@@ -25,4 +25,9 @@ const DomController = (() => {
               .some((coord) => coord[0] === x && coord[1] === y)
           );
 
+        const isHit = gameboard
+          .getHits()
+          .some((coord) => coord[0] === x && coord[1] === y);
+
+
 })();
