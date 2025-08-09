@@ -29,5 +29,9 @@ const DomController = (() => {
           .getHits()
           .some((coord) => coord[0] === x && coord[1] === y);
 
+        const isMiss = gameboard
+          .getMisses()
+          .some((coord) => coord[0] === x && coord[1] === y);
 
+    
 })();
