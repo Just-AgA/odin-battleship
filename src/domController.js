@@ -33,5 +33,8 @@ const DomController = (() => {
           .getMisses()
           .some((coord) => coord[0] === x && coord[1] === y);
 
-    
-})();
+        if (isShipHere && !isEnemy) cell.classList.add('ship');
+        if (isHit) cell.classList.add('hit');
+        if (isMiss) cell.classList.add('miss');
+
+        })();
