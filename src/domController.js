@@ -37,4 +37,13 @@ const DomController = (() => {
         if (isHit) cell.classList.add('hit');
         if (isMiss) cell.classList.add('miss');
 
-        })();
+        if (isEnemy) {
+          cell.addEventListener('click', () => handlePlayerAttack(x, y));
+        }
+
+        boardContainer.appendChild(cell);
+      }
+    }
+  };
+
+  )();
