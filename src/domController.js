@@ -46,4 +46,24 @@ const DomController = (() => {
     }
   };
 
-  )();
+  const handlePlayerAttack = (x, y) => {
+    if (game.isGameOver()) return;
+
+    const result = game.takeTurn(x, y);
+    if (result === null) return;
+
+    renderBoard(computerBoardContainer, game.computer.getGameboard(), true);
+    renderBoard(playerBoardContainer, game.player.getGameboard(), false);
+
+    if (game.isGameOver()) return announceWinner();
+
+    // Computer turn delay
+    setTimeout(() => {
+      const { result, x, y } = game.computerTurn();
+      renderBoard(computerBoardContainer, game.computer.getGameboard(), true);
+      renderBoard(playerBoardContainer, game.player.getGameboard(), false);
+
+      if (game.isGameOver()) announceWinner();
+    }, 500);
+  };
+)();
