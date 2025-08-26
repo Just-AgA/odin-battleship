@@ -66,4 +66,25 @@ const DomController = (() => {
       if (game.isGameOver()) announceWinner();
     }, 500);
   };
-)();
+
+  const announceWinner = () => {
+    const winner = game.player.getGameboard().allShipsSunk()
+      ? 'Computer wins!'
+      : 'You win!';
+    const winnerAnnounce = document.querySelector('#winner');
+    winnerAnnounce.innerHTML = `<h1>${winner}</h1>`;
+
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Restart Game';
+
+    resetBtn.addEventListener('click', () => {
+      // Clear current game state
+      winnerAnnounce.innerHTML = '';
+
+      DomController.init();
+    });
+
+    winnerAnnounce.appendChild(resetBtn);
+  };
+
+ )();
