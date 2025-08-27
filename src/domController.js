@@ -87,4 +87,17 @@ const DomController = (() => {
     winnerAnnounce.appendChild(resetBtn);
   };
 
- )();
+  const init = () => {
+    game = GameController();
+    game.setupShips();
+
+    renderBoard(playerBoardContainer, game.player.getGameboard(), false);
+    renderBoard(computerBoardContainer, game.computer.getGameboard(), true);
+  };
+
+  init();
+
+  return {
+    init,
+  };
+})();
